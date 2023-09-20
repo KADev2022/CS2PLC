@@ -53,7 +53,7 @@ procedure PlayListVars is
         end case;
     end Put_Item;
 
-    type Item_Pointer is access Item_Type; -- Ada poiter type, can ignore this, not learning outcome in PLC
+    type Item_Pointer is access Item_Type; -- Ada pointer type, can ignore this, not learning outcome in PLC
     type PlayList_Type is array(1..3) of Item_Pointer;
 
 
@@ -93,9 +93,9 @@ begin
         item := playlist1(i);
         case item.all.item_variant is
         when PIECE =>
-            length1 := length1 + item.all.piece_length_secs; -- TASK: fix compiler error
+            length1 := length1 + Float(item.all.piece_length_secs); -- TASK 5b: fix compiler error
         when ADVERT =>
-            length1 := length1 + item.all.ad_length_secs; -- TASK: fix compiler error
+            length1 := length1 + Float(item.all.ad_length_secs); -- TASK 5b: fix compiler error
         end case;
     end loop;
 
